@@ -1,0 +1,37 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, accuracy_score
+from sklearn.svm import SVC
+
+data = pd.read_csv('data set') 
+data = data.dropna(subset=['HRV','PSS']) #I was getting NaN error
+X = data[['HRV']]
+y = data['PSS']
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2, random_state=1234)
+
+rf_model = RandomForestClassifier(n_estimators=50, random_state=1234)
+
+rf_model.fit(X_train, y_train)
+
+y_prediction = rf_model.predict(X_test)
+
+acc_score = accuracy_score(y_test,y_prediction)
+classification_report(y_test,y_prediction)
+
+
+rf_model = RandomForestClassifier(n_estimators=50, random_state=1234)
+
+rf_model.fit(X_train, y_train)
+
+y_prediction = rf_model.predict(X_test)
+
+acc_score = accuracy_score(y_test,y_prediction)
+classification_report(y_test,y_prediction)
+
+
