@@ -7,8 +7,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.svm import SVC
 
+#upload file
 data = pd.read_csv('data set') 
-data = data.dropna(subset=['HRV','PSS']) #I was getting NaN error
+data = data.dropna(subset=['HRV','PSS']) # for NaN error 
 X = data[['HRV']]
 y = data['PSS']
 
